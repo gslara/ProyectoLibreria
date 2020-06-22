@@ -23,6 +23,9 @@ import com.libreria.main.service.IClienteService;
 //cambio en el programa para corroborar el uso del git
 //Branch - szdohmen
 
+//RESPUESTA A MENSAJE DE PRUEBA
+//funciona bien
+
 @Controller
 @SessionAttributes("cliente") //el objeto cliente mapeado al formulario se guarda en los atributos de la sesión 
 public class ClienteController {

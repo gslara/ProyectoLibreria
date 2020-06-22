@@ -35,10 +35,10 @@ public class Producto implements Serializable {
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "precio_id")
 	private Precio precio;
-//	
-//	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//	@JoinColumn(name = "producto_id")
-//	private Stock stock;
+	
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "stock_id")
+	private Stock stock;
 	
 	
 	//CONSTRUCTORES ------------------------------------------------
@@ -94,6 +94,14 @@ public class Producto implements Serializable {
 
 	public void setPrecio(Precio precio) {
 		this.precio = precio;
+	}
+
+	public Stock getStock() {
+		return stock;
+	}
+
+	public void setStock(Stock stock) {
+		this.stock = stock;
 	}
 		
 	
