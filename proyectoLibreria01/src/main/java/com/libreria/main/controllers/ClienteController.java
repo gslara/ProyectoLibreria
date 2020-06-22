@@ -19,6 +19,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.libreria.main.entities.Cliente;
 import com.libreria.main.service.IClienteService;
 
+//MENSAJE DE PRUEBA
+//cambio en el programa para corroborar el uso del git
+//Branch - szdohmen
+
 @Controller
 @SessionAttributes("cliente") //el objeto cliente mapeado al formulario se guarda en los atributos de la sesión 
 public class ClienteController {
