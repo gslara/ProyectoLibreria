@@ -25,6 +25,8 @@ public class Precio implements Serializable {
 	@Column(name = "precio_venta")
 	private Double precioVenta;
 
+	
+	//GETTERS Y SETTERS -------------------------------------------------------------------
 	public Long getId() {
 		return id;
 	}
@@ -48,6 +50,5 @@ public class Precio implements Serializable {
 	public void setPrecioVenta(Double precioVenta) {
 		this.precioVenta = precioVenta;
 	}
-	
 	
 }

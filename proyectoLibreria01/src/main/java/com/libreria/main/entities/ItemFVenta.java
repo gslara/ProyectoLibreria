@@ -28,18 +28,7 @@ public class ItemFVenta implements Serializable {
 	private Producto producto;
 
 	
-	//CONSTRUCTORES ------------------------------------------------
-//	public ItemFVenta() {
-//	}
-//
-//	public ItemFVenta(Long id, int cantidad, Producto producto) {
-//		this.id = id;
-//		this.cantidad = cantidad;
-//		this.producto = producto;
-//	}
-
-	
-	//GETTERS Y SETTERS --------------------------------------
+	//GETTERS Y SETTERS -------------------------------------------------------------------
 	public Long getId() {
 		return id;
 	}
@@ -64,10 +53,11 @@ public class ItemFVenta implements Serializable {
 		this.producto = producto;
 	}
 	
+	
+	//CALCULAR IMPORTE --------------------------------------------------------------------
 	public Double calcularImporte() {
-		//Double importe = cantidad.doubleValue() * producto.getPrecio();
 		Double importe = cantidad.doubleValue() * producto.getPrecio().getPrecioVenta();
 		return (double)Math.round(importe * 100d) / 100d;
 	}
-	
+
 }

@@ -2,7 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout/layout :: head"></head>
 <body>
-
 	<header th:replace="layout/layout :: header"></header>
 
 	<div class="container py-4">
@@ -16,8 +15,9 @@
 					<li class="list-group-item" th:text="'Nombre y apellido: ' + ${facturaVenta.cliente}"></li> 
 					<li class="list-group-item" th:text="'Teléfono: ' + ${facturaVenta.cliente.telefono}"></li>
 				</ul>
+				
 				<h4 class="card-title">
-					<a th:href="@{'/ver/' + ${facturaVenta.cliente.id}}" class="btn btn-light btn-xs mb-2">Ir al cliente &raquo;</a>
+					<a th:href="@{'/cliente/ver/' + ${facturaVenta.cliente.id}}" class="btn btn-light btn-xs mb-2">Ir al cliente &raquo;</a>
 				</h4>
 				
 				<ul class="list-group">

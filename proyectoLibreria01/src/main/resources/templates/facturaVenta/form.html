@@ -9,8 +9,9 @@
 		<div class="card bg-light">
 			<div class="card-header" th:text="${titulo}"></div>
 			<div class="card-body">
+			
 				<h4 class="card-title">
-				<a class="btn btn-light btn-xs" th:href="@{'/ver/' + ${facturaVenta.cliente.id}}" th:text="'&laquo; volver a detalles del cliente'"></a>
+				<a class="btn btn-light btn-xs" th:href="@{'/cliente/ver/' + ${facturaVenta.cliente.id}}" th:text="'&laquo; volver a detalles del cliente'"></a>
 				</h4>
 				
 				<form th:action="@{/facturaVenta/form/}" th:object="${facturaVenta}" method="post">
@@ -71,5 +72,6 @@
 
 	<footer th:replace="layout/layout :: footer"></footer>
 	<script th:replace="facturaVenta/js/autocomplete-productos :: javascript"></script>
+	
 </body>
 </html>

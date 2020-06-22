@@ -17,5 +17,9 @@
 	
 	</table>
 
+	<div>
+		<small class="form-text text-danger" th:if="${cantidad[]}.size() > ${itemFVenta.producto.stock.cantidad}" th:errors="*{cantidad}"></small>
+	</div>
+
 </body>
 </html>

@@ -28,10 +28,6 @@ public class Producto implements Serializable {
 	
 	private String nombre;
 	
-	//private String descripcion;
-	
-	//private Double precio; //SACAR DESPUES
-	
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "precio_id")
 	private Precio precio;
@@ -39,23 +35,9 @@ public class Producto implements Serializable {
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "stock_id")
 	private Stock stock;
-	
-	
-	//CONSTRUCTORES ------------------------------------------------
-//	public Producto() {
-//		
-//	}
-//
-//	public Producto(Long id, String nombre, String descripcion, Precio precio, Stock stock) {
-//		this.id = id;
-//		this.nombre = nombre;
-//		this.descripcion = descripcion;
-//		this.precio = precio;
-//		this.stock = stock;
-//	}
 
 	
-	//GETTERS Y SETTERS --------------------------------------
+	//GETTERS Y SETTERS -------------------------------------------------------------------
 	public Long getId() {
 		return id;
 	}
@@ -71,22 +53,6 @@ public class Producto implements Serializable {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-//	public String getDescripcion() {
-//		return descripcion;
-//	}
-//
-//	public void setDescripcion(String descripcion) {
-//		this.descripcion = descripcion;
-//	}
-
-//	public Double getPrecio() {	//DESPUÉS SACAR
-//		return precio;
-//	}
-//
-//	public void setPrecio(Double precio) { //DESPUÉS SACAR
-//		this.precio = precio;
-//	}
 
 	public Precio getPrecio() {
 		return precio;
@@ -104,5 +70,4 @@ public class Producto implements Serializable {
 		this.stock = stock;
 	}
 		
-	
 }

@@ -26,12 +26,15 @@ public class ClienteService implements IClienteService {
 	public IFacturaVentaDao facturaVentaDao;
 	
 	
+	//FIND ALL ----------------------------------------------------------------------------
 	@Override
 	@Transactional(readOnly = true)
 	public List<Cliente> findAll() {
 		return (List<Cliente>) clienteDao.findAll();
 	}
 
+	
+	//SAVE --------------------------------------------------------------------------------
 	@Override
 	@Transactional
 	public void save(Cliente cliente) {
@@ -39,46 +42,59 @@ public class ClienteService implements IClienteService {
 		
 	}
 
+	
+	//FIND BY ID --------------------------------------------------------------------------
 	@Override
 	@Transactional(readOnly = true)
 	public Cliente findById(Long id) {
 		return clienteDao.findById(id).orElse(null);
 	}
 
+	
+	//DELETE BY ID ------------------------------------------------------------------------
 	@Override
 	@Transactional
 	public void deleteById(Long id) {
 		clienteDao.deleteById(id);		
 	}
 
+	
+	//FIND POR NOMBRE ---------------------------------------------------------------------
 	@Override
 	@Transactional(readOnly = true)
 	public List<Producto> findByNombre(String term) {
 		return productoDao.findByNombreLikeIgnoreCase("%" + term + "%"); //buscar por nombre ignorando si es con mayúscula o minúscula
 	}
 
+	
+	//SAVE FACTURA VENTA ------------------------------------------------------------------
 	@Override
 	@Transactional
 	public void saveFacturaVenta(FacturaVenta facturaVenta) {
 		facturaVentaDao.save(facturaVenta);
 	}
 
+	
+	//FIND PRODUCTO BY ID -----------------------------------------------------------------
 	@Override
 	@Transactional(readOnly = true)
 	public Producto findProductoById(Long id) {
 		return productoDao.findById(id).orElse(null);
 	}
 
+	
+	//FIND FACTURA VENTA BY ID ------------------------------------------------------------
 	@Override
 	@Transactional(readOnly = true)
 	public FacturaVenta findFacturaVentaById(Long id) {
 		return facturaVentaDao.findById(id).orElse(null);
 	}
 
+	
+	//DELETE FACTURA ----------------------------------------------------------------------
 	@Override
 	public void deleteFactura(Long id) {
 		facturaVentaDao.deleteById(id);
 	}
 
-	
 }

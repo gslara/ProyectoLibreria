@@ -33,7 +33,7 @@ public class FacturaVenta implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotNull  //FUNCIONA??
+	@NotNull  
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	@PastOrPresent
@@ -47,31 +47,13 @@ public class FacturaVenta implements Serializable {
 	private List<ItemFVenta> items;
 	
 	
-//	@PrePersist //se asigna la fecha justo antes de persistir la factura
-//	public void generarFecha() {
-//		fecha = new Date();
-//	}							//LA QUITAMOS PORQUE LA AGREGAMOS MEDIANTE FORMULARIO
-	
-	
-	//CONSTRUCTORES ------------------------------------------------
+	//CONSTRUCTOR -------------------------------------------------------------------------
 	public FacturaVenta() {
 		items = new ArrayList<ItemFVenta>();
 	}
 
-//	public FacturaVenta(Long id, Date fecha, Double total, int cantidad, /*Producto producto, */Cliente cliente,
-//			List<ItemFVenta> items) {
-//		items = new ArrayList<ItemFVenta>();
-//		this.id = id;
-//		this.fecha = fecha;
-//		this.total = total;
-//		this.cantidad = cantidad;
-//		//this.producto = producto;
-//		this.cliente = cliente;
-//		this.items = items;
-//	}
-
-
-	//SETTERS Y GETTERS --------------------------------------------
+	
+	//SETTERS Y GETTERS -------------------------------------------------------------------
 	public Long getId() {
 		return id;
 	}
@@ -104,10 +86,14 @@ public class FacturaVenta implements Serializable {
 		this.items = items;
 	}
 	
+	
+	//AGREGAR ITEM A LA LISTA -------------------------------------------------------------
 	public void agregarItemFVenta(ItemFVenta item) {
 		this.items.add(item);
 	}
 	
+	
+	//OBTENER VALOR TOTAL -----------------------------------------------------------------
 	public Double getTotal() {
 		Double total = 0.00;
 		

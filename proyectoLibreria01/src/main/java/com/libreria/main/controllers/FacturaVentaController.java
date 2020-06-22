@@ -33,17 +33,16 @@ public class FacturaVentaController {
 	@Autowired
 	private IClienteService clienteService;
 	
-	//private final Logger log = LoggerFactory.getLogger(getClass());
 	
-	
-	
+	//VER ---------------------------------------------------------------------------------
 	@GetMapping("/ver/{id}")
 	public String ver(@PathVariable(value="id") Long id, Model model, RedirectAttributes flash) {
+		
 		FacturaVenta facturaVenta = clienteService.findFacturaVentaById(id);
 		
 		if(facturaVenta == null) {
 			flash.addFlashAttribute("error", "La factura no existe.");
-			return "redirect:/listar";
+			return "redirect:/cliente/listar";
 		}
 		
 		model.addAttribute("facturaVenta", facturaVenta);
@@ -52,13 +51,16 @@ public class FacturaVentaController {
 		return "facturaVenta/ver";
 	}
 	
+	
+	//CREAR -------------------------------------------------------------------------------
 	@GetMapping("/form/{clienteId}")
 	public String crear(@PathVariable(value="clienteId") Long clienteId, Map<String, Object> model, RedirectAttributes flash) {
+		
 		Cliente cliente = clienteService.findById(clienteId);
 		
 		if(cliente == null) {
 			flash.addFlashAttribute("error", "El cliente no existe.");
-			return "redirect:/listar";
+			return "redirect:/cliente/listar";
 		}
 		
 		FacturaVenta facturaVenta = new FacturaVenta();
@@ -69,11 +71,15 @@ public class FacturaVentaController {
 		return "facturaVenta/form";
 	}
 	
+	
+	//CARGAR PRODUCTOS --------------------------------------------------------------------
 	@GetMapping(value="/cargar-productos/{term}", produces= {"application/json"})
 	public @ResponseBody List<Producto> cargarProductos(@PathVariable String term) {
 		return clienteService.findByNombre(term);
 	}
 	
+	
+	//GUARDAR -----------------------------------------------------------------------------
 	@PostMapping("/form")
 	public String guardar(@Valid FacturaVenta facturaVenta, BindingResult result, Model model,
 			@RequestParam(name="item_id[]", required=false) Long[] itemId, 
@@ -84,7 +90,7 @@ public class FacturaVentaController {
 			model.addAttribute("titulo", "Crear Factura");
 			return "facturaVenta/form";
 		}
-		
+		    
 		if(itemId == null || itemId.length == 0) {
 			model.addAttribute("titulo", "Crear Factura");
 			model.addAttribute("error", "Error: ¡la factura DEBE tener líneas!");
@@ -94,13 +100,20 @@ public class FacturaVentaController {
 		for(int i=0; i<itemId.length; i++) {
 			Producto producto = clienteService.findProductoById(itemId[i]);
 			
-			ItemFVenta item = new ItemFVenta();
-			item.setCantidad(cantidad[i]);
-			item.setProducto(producto);
-			
-			facturaVenta.agregarItemFVenta(item);
-			
-			//log.info("ID: " + itemId[i].toString() + ", cantidad: " + cantidad[i].toString()); //para probar recibiendo mensaje por consola
+			if(cantidad[i] <= producto.getStock().getCantidad()) {	//comprobamos que la cantidad que pide el cliente no supera la existente en nuestro stock
+				ItemFVenta item = new ItemFVenta();
+				item.setCantidad(cantidad[i]);
+				item.setProducto(producto);
+				
+				facturaVenta.agregarItemFVenta(item);
+				producto.getStock().setCantidad(producto.getStock().getCantidad() - cantidad[i]);
+				
+			} else {
+				model.addAttribute("titulo", "Crear Factura");
+				model.addAttribute("error", "Error: No hay suficiente stock de " + producto.getNombre());
+				return "facturaVenta/form";
+			}
+		
 		}
 		
 		clienteService.saveFacturaVenta(facturaVenta);
@@ -108,19 +121,24 @@ public class FacturaVentaController {
 		
 		flash.addFlashAttribute("success", "¡Factura creada con éxito!");
 		
-		return "redirect:/ver/" + facturaVenta.getCliente().getId();
+		return "redirect:/cliente/ver/" + facturaVenta.getCliente().getId();
 	}
 	
+	
+	//ELIMINAR ----------------------------------------------------------------------------
 	@GetMapping("/eliminar/{id}")
 	public String eliminar(@PathVariable(value="id") Long id, RedirectAttributes flash) {
+		
 		FacturaVenta facturaVenta = clienteService.findFacturaVentaById(id);
 		
 		if(facturaVenta != null) {
 			clienteService.deleteFactura(id);
 			flash.addFlashAttribute("success", "Factura eliminada con éxito.");
-			return "redirect:/ver/" + facturaVenta.getCliente().getId();
+			return "redirect:/cliente/ver/" + facturaVenta.getCliente().getId();
 		}
+		
 		flash.addFlashAttribute("error", "La factura no se puede eliminar porque no existe.");
-		return "redirect:/listar";
+		return "redirect:/cliente/listar";
 	}
+	
 }

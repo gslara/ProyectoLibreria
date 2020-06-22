@@ -25,11 +25,15 @@ public class Stock implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date fecha;
 
+	
+	//GENERAR FECHA -----------------------------------------------------------------------
 	@PrePersist
 	public void generarFecha() {
 		fecha = new Date();
 	}
 	
+	
+	//GETTERS Y SETTERS -------------------------------------------------------------------
 	public Long getId() {
 		return id;
 	}
@@ -53,6 +57,5 @@ public class Stock implements Serializable {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	
 	
 }

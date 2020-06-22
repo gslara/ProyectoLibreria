@@ -35,22 +35,14 @@ public class Cliente implements Serializable {
 	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true) //un cliente, muchas facturas. FetchType.LAZY: forma de carga para evitar q traiga todo de una vez, por cada factura va a traer a su cliente
 	private List<FacturaVenta> facturasVenta;					  //CascadeType.ALL: todas las operaciones se van a realizar en cadena. Se persiste el cliente y también sus facturas.
 
-	
-	//CONSTRUCTORES ------------------------------------------------
+
+	//CONSTRUCTOR -------------------------------------------------------------------------
 	public Cliente() {
 		facturasVenta = new ArrayList<FacturaVenta>();
 	}
+
 	
-//	public Cliente(Long id, String nombre, String apellido, int telefono/*, List<FacturaVenta> facturasVenta*/) {
-//		this.id = id;
-//		this.nombre = nombre;
-//		this.apellido = apellido;
-//		this.telefono = telefono;
-//		//this.facturasVenta = facturasVenta;
-//	}
-
-
-	//GETTERS Y SETTERS ---------------------------------------------------
+	//GETTERS Y SETTERS -------------------------------------------------------------------
 	public Long getId() {
 		return id;
 	}
@@ -91,10 +83,14 @@ public class Cliente implements Serializable {
 		this.facturasVenta = facturasVenta;
 	}
 	
+	
+	//AGREGAR FACTURA A LA LISTA ----------------------------------------------------------
 	public void agregarFacturaVenta(FacturaVenta facturaVenta) {
 		facturasVenta.add(facturaVenta);
 	}
-
+	
+	
+	//MOSTRAR NOMBRE COMPLETO CLIENTE EN facturaVenta/ver.html ----------------------------
 	@Override
 	public String toString() {
 		return nombre + " " + apellido;

@@ -2,7 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout/layout :: head"></head>
 <body>
-
 	<header th:replace="layout/layout :: header"></header>
 
 	<div class="container py-4">
@@ -12,7 +11,7 @@
 			<div class="card-body">
 
 				<h4 class="card-title">
-					<a th:href="@{'/listar'}" class="btn btn-light btn-xs">&laquo; volver</a>
+					<a th:href="@{'/cliente/listar'}" class="btn btn-light btn-xs">&laquo; volver</a>
 				</h4>
 
 				<ul class="list-group">
@@ -22,7 +21,7 @@
 				</ul>
 
 				<div th:if="${#lists.isEmpty(cliente.facturasVenta)}" class="alert alert-info mt-4 mb-2" th:text="'No hay facturas asignadas para el cliente ' + ${cliente.nombre} + ' ' + ${cliente.apellido}"></div>
-				
+
 				<div th:if="${not #lists.isEmpty(cliente.facturasVenta)}" class="card-header mt-4 mb-2" th:text="'Lista de facturas'"></div>
 				
 				<h4>
@@ -46,8 +45,7 @@
 							<td th:text="${facturaVenta.total}"></td>
 							<td>
 								<a class="btn btn-primary btn-xs" th:href="@{'/facturaVenta/ver/' + ${facturaVenta.id}}" th:text="'Ver detalle'"></a>
-								<a class="btn btn-danger btn-xs" th:href="@{'/facturaVenta/eliminar/' + ${facturaVenta.id}}" th:text="'Eliminar'" 
-								onclick="return confirm('¿Estás segura que deseas eliminar la factura?');"></a>
+								<a class="btn btn-danger btn-xs" th:href="@{'/facturaVenta/eliminar/' + ${facturaVenta.id}}" th:text="'Eliminar'" onclick="return confirm('¿Estás segura que deseas eliminar la factura?');"></a>
 							</td>
 						</tr>
 					</tbody>

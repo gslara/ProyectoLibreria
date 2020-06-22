@@ -14,13 +14,22 @@ INSERT INTO precios (precio_compra, precio_venta) VALUES(17000, 18000);
 INSERT INTO precios (precio_compra, precio_venta) VALUES(2500, 4500);
 
 
-INSERT INTO productos (nombre, precio_id) VALUES('Panasonic Pantalla LCD', 1);
-INSERT INTO productos (nombre, precio_id) VALUES('Sony Camara digital DSC-W320B', 2);
-INSERT INTO productos (nombre, precio_id) VALUES('Apple iPod shuffle', 3);
-INSERT INTO productos (nombre, precio_id) VALUES('Sony Notebook Z110', 4);
-INSERT INTO productos (nombre, precio_id) VALUES('Hewlett Packard Multifuncional F2280', 5);
-INSERT INTO productos (nombre, precio_id) VALUES('Bianchi Bicicleta Aro 26', 6);
-INSERT INTO productos (nombre, precio_id) VALUES('Mica Comoda 5 Cajones', 7);
+INSERT INTO stock (cantidad, fecha) VALUES(20, NOW());
+INSERT INTO stock (cantidad, fecha) VALUES(12, NOW());
+INSERT INTO stock (cantidad, fecha) VALUES(5, NOW());
+INSERT INTO stock (cantidad, fecha) VALUES(2, NOW());
+INSERT INTO stock (cantidad, fecha) VALUES(10, NOW());
+INSERT INTO stock (cantidad, fecha) VALUES(1, NOW());
+INSERT INTO stock (cantidad, fecha) VALUES(40, NOW());
+
+
+INSERT INTO productos (nombre, precio_id, stock_id) VALUES('Panasonic Pantalla LCD', 1, 1);
+INSERT INTO productos (nombre, precio_id, stock_id) VALUES('Sony Camara digital DSC-W320B', 2, 2);
+INSERT INTO productos (nombre, precio_id, stock_id) VALUES('Apple iPod shuffle', 3, 3);
+INSERT INTO productos (nombre, precio_id, stock_id) VALUES('Sony Notebook Z110', 4, 4);
+INSERT INTO productos (nombre, precio_id, stock_id) VALUES('Hewlett Packard Multifuncional F2280', 5, 5);
+INSERT INTO productos (nombre, precio_id, stock_id) VALUES('Bianchi Bicicleta Aro 26', 6, 6);
+INSERT INTO productos (nombre, precio_id, stock_id) VALUES('Mica Comoda 5 Cajones', 7, 7);
 
 
 
