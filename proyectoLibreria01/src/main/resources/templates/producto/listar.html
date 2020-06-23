@@ -49,7 +49,7 @@
 				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th>id</th>
+							<!-- <th>id</th>  -->
 							<th>Producto</th>
 							<th>Precio compra</th>
 							<th>Precio venta</th>
@@ -59,7 +59,7 @@
 
 					<tbody>
 						<tr th:each="producto: ${productos}">
-							<td th:text="${producto.id}"></td>
+							<!--  <td th:text="${producto.id}"></td>  -->
 							<td th:text="${producto.nombre}"></td>
 							<td th:text="${producto.precio.precioCompra}"></td>
 							<td th:text="${producto.precio.precioVenta}"></td>
