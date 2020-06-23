@@ -37,6 +37,12 @@ public class Producto implements Serializable {
 	private Stock stock;
 
 	
+	
+	
+	public Producto() {
+		
+	}
+
 	//GETTERS Y SETTERS -------------------------------------------------------------------
 	public Long getId() {
 		return id;

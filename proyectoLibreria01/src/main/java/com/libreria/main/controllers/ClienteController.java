@@ -17,7 +17,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.libreria.main.entities.Cliente;
-import com.libreria.main.service.IClienteService;
+import com.libreria.main.service.ClienteService;
 
 @Controller
 @RequestMapping("/cliente")
@@ -25,7 +25,7 @@ import com.libreria.main.service.IClienteService;
 public class ClienteController {
 
 	@Autowired
-	private IClienteService clienteService;
+	private ClienteService clienteService;
 	
 	
 	//VER ---------------------------------------------------------------------------------

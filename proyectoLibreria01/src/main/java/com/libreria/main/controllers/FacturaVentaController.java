@@ -23,7 +23,7 @@ import com.libreria.main.entities.Cliente;
 import com.libreria.main.entities.FacturaVenta;
 import com.libreria.main.entities.ItemFVenta;
 import com.libreria.main.entities.Producto;
-import com.libreria.main.service.IClienteService;
+import com.libreria.main.service.ClienteService;
 
 @Controller
 @RequestMapping("/facturaVenta")
@@ -31,7 +31,7 @@ import com.libreria.main.service.IClienteService;
 public class FacturaVentaController {
 
 	@Autowired
-	private IClienteService clienteService;
+	private ClienteService clienteService;
 	
 	
 	//VER ---------------------------------------------------------------------------------

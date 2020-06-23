@@ -1,13 +1,13 @@
 package com.libreria.main.entities;
 
 import java.io.Serializable;
-import java.util.Date;
+//import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.PrePersist;
+//import javax.persistence.PrePersist;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -23,14 +23,14 @@ public class Stock implements Serializable {
 	private Integer cantidad;
 	
 	@Temporal(TemporalType.DATE)
-	private Date fecha;
+	//private Date fecha;
 
 	
 	//GENERAR FECHA -----------------------------------------------------------------------
-	@PrePersist
-	public void generarFecha() {
-		fecha = new Date();
-	}
+//	@PrePersist
+//	public void generarFecha() {
+//		fecha = new Date();
+//	}
 	
 	
 	//GETTERS Y SETTERS -------------------------------------------------------------------
@@ -50,12 +50,12 @@ public class Stock implements Serializable {
 		this.cantidad = cantidad;
 	}
 
-	public Date getFecha() {
-		return fecha;
-	}
-
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
-	}
+//	public Date getFecha() {
+//		return fecha;
+//	}
+//
+//	public void setFecha(Date fecha) {
+//		this.fecha = fecha;
+//	}
 	
 }

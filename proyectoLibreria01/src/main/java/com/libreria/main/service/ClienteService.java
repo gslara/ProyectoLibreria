@@ -93,6 +93,7 @@ public class ClienteService implements IClienteService {
 	
 	//DELETE FACTURA ----------------------------------------------------------------------
 	@Override
+	@Transactional
 	public void deleteFactura(Long id) {
 		facturaVentaDao.deleteById(id);
 	}
