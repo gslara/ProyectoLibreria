@@ -13,4 +13,6 @@ public interface IProductoDao extends CrudRepository<Producto, Long> {
 	public List<Producto> findByNombre(String term);
 	
 	public List<Producto> findByNombreLikeIgnoreCase(String term); //buscar por nombre ignorando si es con mayúscula o minúscula
+
+	
 }

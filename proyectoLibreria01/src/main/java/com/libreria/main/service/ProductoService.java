@@ -22,4 +22,5 @@ public class ProductoService {
 		return (List<Producto>) productoDao.findAll();
 	}
 	
+
 }

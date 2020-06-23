@@ -35,6 +35,7 @@ public class Cliente implements Serializable {
 	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true) //un cliente, muchas facturas. FetchType.LAZY: forma de carga para evitar q traiga todo de una vez, por cada factura va a traer a su cliente
 	private List<FacturaVenta> facturasVenta;					  //CascadeType.ALL: todas las operaciones se van a realizar en cadena. Se persiste el cliente y también sus facturas.
 
+	
 
 	//CONSTRUCTOR -------------------------------------------------------------------------
 	public Cliente() {
